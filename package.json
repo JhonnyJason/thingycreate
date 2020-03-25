@@ -1,6 +1,6 @@
 {
     "name": "thingycreate",
-    "version": "0.3.8",
+    "version": "0.3.9",
     "description": "This is the shit!",
     "scripts": {
         "build-coffee": "coffee -o output/ -c sources/source/*/*.coffee",
@@ -24,6 +24,10 @@
         "build": "run-s -ns clean-package build-coffee copyscript install-node-modules prepend-shebang",
         "watch": "run-p -nsr watch-coffee",
         "release": "run-s -ns build publish-script",
+        "package-update-release": "run-s -ns update-tools update-packages inc-versions update-cli-packages push release",
+        "inc-versions": "toolset/thingy-build-system/cli/inc-versions.js",
+        "sync-versions": "toolset/thingy-build-system/cli/sync-versions.js",
+        "update-tools": "toolset/thingy-build-system/cli/update-tools.sh",
         "update-cli-packages": "toolset/thingy-build-system/cli/update-packages.sh",
         "prepend-shebang": "toolset/thingy-build-system/cli/prepend-shebang-to-output-index.sh",
         "publish-script": "toolset/thingy-build-system/cli/publish-on-npm.sh",
@@ -43,7 +47,7 @@
     "homepage": "https://github.com/JhonnyJason/thingycreate#readme",
     "dependencies": {
         "coffeescript": "^2.5.1",
-        "npm-check-updates": "^4.0.4",
+        "npm-check-updates": "^4.0.5",
         "npm-run-all": "^4.1.5",
         "thingy-allmodules-sync": "^0.1.3",
         "thingy-module-gen": "^0.1.4",
